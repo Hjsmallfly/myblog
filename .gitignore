@@ -1,0 +1,11 @@
+# lib files
+lib/
+
+# cached templates
+templates_c/
+
+# database authenciation info
+authentication_file.txt
+
+# user_info
+user.txt
