@@ -50,7 +50,7 @@ define("POST_TABLE", "
       id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, # 主键
       title VARCHAR(140) CHARACTER SET utf8, # 标题
       keywords VARCHAR(140) CHARACTER SET utf8, # 用,隔开
-      moment TIMESTAMP, # 发表时间
+      moment TIMESTAMP DEFAULT CURRENT_TIMESTAMP , # 发表时间(加个default是防止 ON UPDATE CURRENT_TIMESTAMP )
       viewed_times INT DEFAULT 0, # 阅读量
       content TEXT CHARACTER SET utf8,  # 内容
       author VARCHAR(40) CHARACTER SET utf8,  # 作者名

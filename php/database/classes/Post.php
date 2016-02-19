@@ -86,6 +86,8 @@ class Post{
         if (!$catalog_info)
             return false;
         try{
+            // 增加计数
+            Catalog::modifyPostCount($this->db, $catalog_info["id"]);
             $stmt =
                 $this->db->prepare("INSERT INTO Posts
                   (title, keywords, moment, content, catalog_tag, author, catalog_id, author_id)
@@ -165,6 +167,27 @@ class Post{
         }catch(PDOException $err){
             error_handler($err, "query post count", true);
             return null;
+        }
+    }
+
+    public static function modifyPostCount($db, $post_id, $negative=false){
+//        $db = connect_to_database();
+        $post = static::getPostByField($db, static::FIELD_ID, $post_id, PDO::PARAM_INT);
+        if ($post){
+            try {
+                $stmt = $db->prepare("UPDATE Posts SET viewed_times=:viewed_times where id=:id");
+                $stmt->bindParam(":id", $post_id);
+                if (!$negative)
+                    $viewed_times = $post["viewed_times"] + 1;
+                else
+                    $viewed_times = $post["viewed_times"] - 1;
+                $stmt->bindParam(":viewed_times", $viewed_times);
+                $stmt->execute();
+                return $viewed_times;
+            }catch (PDOException $err){
+                error_handler($err, "increaseViewedTimes($post_id)", true);
+                return false;
+            }
         }
     }
 

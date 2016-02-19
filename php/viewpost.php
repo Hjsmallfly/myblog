@@ -27,6 +27,8 @@ require_once("database/connect.php");
 require_once("database/classes/Post.php");
 $db = connect_to_database();
 $post = Post::getPostByField($db, Post::FIELD_ID, $id, PDO::PARAM_INT);
+// 修改浏览次数
+Post::modifyPostCount($db, $post["id"]);
 
 // 把keywords分割为数组
 $post["keywords"] = explode(";", $post["keywords"]);

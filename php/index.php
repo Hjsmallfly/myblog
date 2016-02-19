@@ -8,7 +8,7 @@
 // 开启session
 session_start();
 
-define("POSTS_PER_PAGE", 2);
+define("POSTS_PER_PAGE", 10);
 
 $page_num = 1;
 if (isset($_GET["p"]) && is_numeric($_GET["p"])){
@@ -39,21 +39,14 @@ for($i = 0 ; $i < count($page) ; ++$i){
     $page[$i]["moment"] = date("Y/m/d", $timestamp);
 }
 
-$catalogs = [
-    [
-        "name" => "c++",
-        "count" => 99,
-        "url" => "http://localhost"
-    ],
-    [
-        "name" => "java",
-        "count" => 99,
-        "url" => "http://localhost"
-    ],
-];
+// 获取所有分类
+require_once("database/classes/Catalog.php");
+$catalogs = Catalog::get_all_catalogs($db);
 
-$pages = range(1, ( $post_count / POSTS_PER_PAGE) + 1);
-//var_dump($post_count);
+// 处理分页信息
+$page_count = intval(( $post_count / POSTS_PER_PAGE));
+$page_count = $post_count == 0 ? 1 : $page_count;
+$pages = range(1, $page_count + 1); // + 1 because range produce [low, high)
 
 require_once("/usr/local/lib/smarty-3.1.28/libs/Smarty.class.php");
 $smarty = new Smarty();
