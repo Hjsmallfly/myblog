@@ -11,6 +11,7 @@ session_start();
 require_once("/usr/local/lib/smarty-3.1.28/libs/Smarty.class.php");
 require_once("database/connect.php");
 require_once("database/classes/Post.php");
+require_once("database/classes/Catalog.php");
 // debug
 //$_SESSION["logged"] = true;
 
@@ -24,9 +25,10 @@ if (isset($_POST["title"])){
     header("Location: viewpost.php?id=" . $post_info["id"]);
 }
 
+$db = connect_to_database();
+
 $smarty = new Smarty();
-$catalogs = [
-    "c++", "python", "java", "php", "life"
-];
+$catalogs = Catalog::get_all_catalogs($db);
+//var_dump($catalogs);
 $smarty->assign("catalogs", $catalogs);
 $smarty->display("add_post.tpl");

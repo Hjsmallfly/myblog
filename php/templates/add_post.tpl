@@ -58,29 +58,78 @@
         <div class="row">
             <div class="col-md-offset-2 col-md-8">
                 <form action="addPost.php" method="POST" role="form">
+                    {*标题*}
                     <div class="form-group">
                         <label class="sr-only" for="title">Title</label>
                         <input class="form-control focus" id="title" type="text" name="title" placeholder="Title" required>
                     </div>
+                    {*标题*}
 
+                    {*用于增加分类和修改作者*}
+                    <div class="row">
+                        <div class="col-md-6">
+                            {*新建分类*}
+                            <div class="form-group">
+                                <div class="input-group input-group-sm">
+                                    <span class="input-group-btn">
+                                        <button data-toggle="collapse" data-target="#new_catalog"
+                                                class="btn btn-secondary glyphicon" type="button">
+                                            +catalog
+                                        </button>
+                                    </span>
+                                    <input id="new_catalog" type="text" class="form-control fade" placeholder="type your new catalog">
+                                </div>
+                            </div>
+                            {*新建分类*}
+                        </div>
+
+                        <div class="col-md-6">
+                            {*修改作者*}
+                            <div class="form-group">
+                                <div class="input-group input-group-sm">
+                                    <span class="input-group-btn">
+                                        <button data-toggle="collapse" data-target="#edit_author"
+                                                class="btn btn-secondary glyphicon glyphicon-edit" type="button">
+                                            EditAuthor
+                                        </button>
+                                    </span>
+                                    <input id="edit_author" type="text" class="form-control fade" placeholder="type author name">
+                                </div>
+                            </div>
+                            {*修改作者*}
+                        </div>
+                    </div>
+                    {*用于增加分类和修改作者*}
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            {*分类*}
+                            <div class="form-group">
+                                <label for="catalog" class="sr-only" ><small>Catalog</small></label>
+                                <select name="catalog" id="catalog" class="form-control" >
+                                    {foreach $catalogs as $catlog}
+                                        <option>{$catlog["catalog_tag"]}</option>
+                                    {/foreach}
+                                </select>
+                            </div>
+                            {*分类*}
+                        </div>
+                        <div class="col-md-6">
+                            {*关键字*}
+                            <div class="form-group">
+                                <label for="keywords" class="sr-only">keywords</label>
+                                <input type="text" class="form-control" id="keywords" name="keywords" placeholder="keyword1;keyword2">
+                            </div>
+                            {*关键字*}
+                        </div>
+                    </div>
+
+                    {*内容*}
                     <div class="form-group" >
                         <label  class="sr-only" for="content">Body</label>
                         <textarea class="form-control" id="content" name="content"></textarea>
                     </div>
-
-                    <div class="form-group">
-                        <label for="catalog" class="sr-only" ><small>Catalog</small></label>
-                        <select name="catalog" id="catalog" class="form-control">
-                            {foreach $catalogs as $catlog}
-                                <option>{$catlog}</option>
-                            {/foreach}
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="keywords" class="sr-only">keywords</label>
-                        <input type="text" class="form-control" id="keywords" name="keywords" placeholder="key1;key2">
-                    </div>
+                    {*内容*}
 
                     <div class="form-group">
                         <label class="sr-only" for="submit">Submit</label>

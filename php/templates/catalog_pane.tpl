@@ -5,7 +5,7 @@
     </li>
     {foreach $catalog_items as $item}
         <li class="list-group-item">
-            <span class="badge">{$item["post_count"]}</span><a href="viewtag.php?={$post["id"]}">
+            <span class="badge">{$item["post_count"]}</span><a href="viewtag.php?={$item["id"]}">
                 {$item["catalog_tag"]}
             </a>
         </li>
