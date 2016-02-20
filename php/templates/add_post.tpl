@@ -77,7 +77,7 @@
                                             +catalog
                                         </button>
                                     </span>
-                                    <input id="new_catalog" type="text" class="form-control fade" placeholder="type your new catalog">
+                                    <input name="new_catalog" id="new_catalog" type="text" class="form-control fade" placeholder="type your new catalog">
                                 </div>
                             </div>
                             {*新建分类*}
@@ -93,7 +93,7 @@
                                             EditAuthor
                                         </button>
                                     </span>
-                                    <input id="edit_author" type="text" class="form-control fade" placeholder="type author name">
+                                    <input value="{$smarty.session['username']}" name="username" id="edit_author" type="text" class="form-control fade" placeholder="type author name">
                                 </div>
                             </div>
                             {*修改作者*}

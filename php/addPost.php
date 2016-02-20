@@ -18,11 +18,27 @@ require_once("database/classes/Catalog.php");
 if (!isset($_SESSION["logged"]))
     header("Location: login.php");
 
+
 if (isset($_POST["title"])){
+//    var_dump($_POST);
+//    return;
+//    'title' => string 'Hello' (length=5)
+//    'new_catalog' => string '' (length=0)
+//    'username' => string 'smallfly' (length=8)
+//    'catalog' => string 'life' (length=4)
+//    'keywords' => string '' (length=0)
+//    'content' => string '' (length=0)
+    $catalog = mb_strlen($_POST["new_catalog"]) > 0 ? $_POST["new_catalog"] : $_POST["catalog"];
     $db = connect_to_database();
-    $post = new Post($db, $_POST["title"], $_POST["content"], $_POST["keywords"], $_POST["catalog"], "smallfly");
-    $post_info = $post->save();
-    header("Location: viewpost.php?id=" . $post_info["id"]);
+    $post = new Post($db, $_POST["title"], $_POST["content"],
+        $_POST["keywords"], $catalog, $_POST["username"]);
+
+    $post_id = $post->save();
+//    var_dump($post_info);
+    $location_str = "Location: viewpost.php?id=" . $post_id;
+//    var_dump($post_id);
+    error_log($location_str);
+    header($location_str);
 }
 
 $db = connect_to_database();
