@@ -74,7 +74,7 @@ class Post{
         }
     }
 
-    public function save(){
+    public function save($id = null){
         $author = new Author($this->db, $this->author_name, null);
         $author_info = $author->save();
 //        var_dump($author_info);
@@ -111,6 +111,20 @@ class Post{
             return false;
         }
 
+    }
+
+    public function update($id){
+        $post = static::getPostByField($this->db, static::FIELD_ID, $id, PDO::PARAM_INT);
+        if (!$post)
+            return false;
+//        $this->db = connect_to_database();
+//        $stmt = $this->db->prepare("UPDATA");
+        /*
+         * "INSERT INTO Posts
+                  (title, keywords, moment, content, catalog_tag, author, catalog_id, author_id)
+                  VALUES (:title, :keywords, :moment, :content, :catalog_tag, :author, :c_id, :a_id)"
+         */
+//        $stmt = $this->db->prepare("UPDATE Posts SET title")
     }
 
     public static function get_pagination($db, $page_num, $page_size){
@@ -203,7 +217,8 @@ class Post{
             $stmt = $db->prepare("DELETE FROM Posts WHERE id=:post_id");
             $stmt->bindParam(":post_id", $post_id);
             $stmt->execute();
-            if ($stmt->rowCount()) {
+            if ($stmt->rowCount() > 0) {
+                Catalog::modifyPostCount($db, $post["catalog_id"], true);
                 return true;
             } else {
                 return false;

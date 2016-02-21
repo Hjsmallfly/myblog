@@ -58,10 +58,33 @@
         <div class="row">
             <div class="col-md-offset-2 col-md-8">
                 <form action="addPost.php" method="POST" role="form">
+
+                    {*用于判断是否是修改内容*}
+                    {if isset($post)}
+                        <input id="post_id" type="hidden" value="{$post["id"]}">
+                    {/if}
+
                     {*标题*}
                     <div class="form-group">
                         <label class="sr-only" for="title">Title</label>
-                        <input class="form-control focus" id="title" type="text" name="title" placeholder="Title" required>
+                        {*{if isset($post)}*}
+                            {*<input class="form-control" id="title" type="text"*}
+                                   {*name="title" placeholder="Title" required*}
+                                   {*value="{$post["title"]}"*}
+                            {*>*}
+                        {*{else}*}
+                            {*<input class="form-control" id="title" type="text"*}
+                                   {*name="title" placeholder="Title" required>*}
+                        {*{/if}*}
+                        {if isset($post)}
+                            <input class="form-control" id="title" type="text"
+                                   name="title" placeholder="Title" required value="{$post["title"]}">
+                        {else}
+                            <input class="form-control" id="title" type="text"
+                                   name="title" placeholder="Title" required>
+                        {/if}
+
+
                     </div>
                     {*标题*}
 
@@ -93,7 +116,12 @@
                                             EditAuthor
                                         </button>
                                     </span>
-                                    <input value="{$smarty.session['username']}" name="username" id="edit_author" type="text" class="form-control fade" placeholder="type author name">
+                                    {if isset($post)}
+                                        <input value="{$post["author"]}" name="username" id="edit_author" type="text" class="form-control fade" placeholder="type author name">
+                                    {else}
+                                        <input value="{$smarty.session['username']}" name="username" id="edit_author" type="text" class="form-control fade" placeholder="type author name">
+                                    {/if}
+
                                 </div>
                             </div>
                             {*修改作者*}
@@ -108,7 +136,11 @@
                                 <label for="catalog" class="sr-only" ><small>Catalog</small></label>
                                 <select name="catalog" id="catalog" class="form-control" >
                                     {foreach $catalogs as $catlog}
-                                        <option>{$catlog["catalog_tag"]}</option>
+                                        {if isset($post) && $post["catalog_tag"] == $catlog["catalog_tag"] }
+                                            <option selected>{$catlog["catalog_tag"]}</option>
+                                        {else}
+                                            <option>{$catlog["catalog_tag"]}</option>
+                                        {/if}
                                     {/foreach}
                                 </select>
                             </div>
@@ -118,7 +150,12 @@
                             {*关键字*}
                             <div class="form-group">
                                 <label for="keywords" class="sr-only">keywords</label>
-                                <input type="text" class="form-control" id="keywords" name="keywords" placeholder="keyword1;keyword2">
+                                {if isset($post)}
+                                    <input value="{$post['keywords']}" type="text" class="form-control" id="keywords" name="keywords" placeholder="keyword1;keyword2">
+                                {else}
+                                    <input type="text" class="form-control" id="keywords" name="keywords" placeholder="keyword1;keyword2">
+                                {/if}
+
                             </div>
                             {*关键字*}
                         </div>
@@ -127,7 +164,11 @@
                     {*内容*}
                     <div class="form-group" >
                         <label  class="sr-only" for="content">Body</label>
-                        <textarea class="form-control" id="content" name="content"></textarea>
+                        <textarea class="form-control" id="content" name="content">
+                            {if isset($post)}
+                                {$post["content"]}
+                            {/if}
+                        </textarea>
                     </div>
                     {*内容*}
 
