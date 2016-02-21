@@ -25,15 +25,17 @@ if (!isset($_SESSION["logged"])) {
 
 // 处理post请求
 if (isset($_POST["title"])){
+    $id = null;
     if (isset($_POST["post_id"])){
         // 说明是在修改文章内容
+        $id = intval($_POST["post_id"]);
     }
     $catalog = mb_strlen($_POST["new_catalog"]) > 0 ? $_POST["new_catalog"] : $_POST["catalog"];
     $db = connect_to_database();
     $post = new Post($db, $_POST["title"], $_POST["content"],
         $_POST["keywords"], $catalog, $_POST["username"]);
 
-    $post_id = $post->save();
+    $post_id = $post->save($id);
 //    var_dump($post_info);
     $location_str = "Location: viewpost.php?id=" . $post_id;
 //    var_dump($post_id);

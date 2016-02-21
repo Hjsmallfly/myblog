@@ -60,7 +60,7 @@
             <!-- EMPTY -->
         </div>
     </div> <!-- row -->
-    {include file="pagination.tpl" pages=$pages}
+    {include file="pagination.tpl" page_info=$page_info}
 </div> <!-- container -->
 
 </body>

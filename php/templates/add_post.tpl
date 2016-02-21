@@ -61,7 +61,7 @@
 
                     {*用于判断是否是修改内容*}
                     {if isset($post)}
-                        <input id="post_id" type="hidden" value="{$post["id"]}">
+                        <input name="post_id" id="post_id" type="hidden" value="{$post["id"]}">
                     {/if}
 
                     {*标题*}

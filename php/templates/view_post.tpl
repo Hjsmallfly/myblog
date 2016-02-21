@@ -45,9 +45,9 @@
     <div id="edit_area" class="col-md-offset-2 col-md-8">
     {if isset($smarty.session["logged"])}
         <div id="edit_buttons" class="pull-right">
-            <button type="button" class="btn btn-primary">
+            <a class="btn btn-primary" href="addPost.php?id={$post['id']}">
                 <span class="glyphicon glyphicon-edit">Edit</span>
-            </button>
+            </a>
             <button type="button" class="btn btn-danger" onclick="delete_post({$post['id']})">
                 <span class=>Delete</span>
             </button>

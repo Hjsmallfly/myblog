@@ -74,7 +74,15 @@ class Post{
         }
     }
 
-    public function save($id = null){
+    /**
+     * id 用于判断是新文章还是旧文章
+     * update_time 在 id 不为空的时候控制是否更新修改的文章的时间戳
+     * 返回不为false的时候，返回的是这篇post在数据库中的id
+     * @param null $id
+     * @param bool $update_time
+     * @return bool
+     */
+    public function save($id = null, $update_time=false){
         $author = new Author($this->db, $this->author_name, null);
         $author_info = $author->save();
 //        var_dump($author_info);
@@ -86,12 +94,32 @@ class Post{
         if (!$catalog_info)
             return false;
         try{
-            // 增加计数
-            Catalog::modifyPostCount($this->db, $catalog_info["id"]);
-            $stmt =
-                $this->db->prepare("INSERT INTO Posts
+            if ($id != null){
+                $post = Post::getPostByField($this->db, static::FIELD_ID, $id, PDO::PARAM_INT);
+                if (!$post)
+                    return false;
+//                $this->db = connect_to_database();
+                // 注意 执行 UPDATE 的时候一定要记得带上 WHERE 条件， 不然会全部都改掉!
+                $stmt = $this->db->prepare("UPDATE Posts SET title=:title, keywords=:keywords,
+moment=:moment, content=:content, catalog_tag=:catalog_tag, author=:author, catalog_id=:c_id,
+author_id=:a_id WHERE id=$id");
+                // 时间戳
+                if (!$update_time){
+                    $this->moment = $post["moment"];    // 使用之前的时间戳
+                }
+                // 分类
+                if ($this->catalog_tag != $post["catalog_tag"]){
+                    Catalog::modifyPostCount($this->db, $post["catalog_id"], true);
+                }
+
+            }else{
+                // 增加计数
+                Catalog::modifyPostCount($this->db, $catalog_info["id"]);
+                $stmt =
+                    $this->db->prepare("INSERT INTO Posts
                   (title, keywords, moment, content, catalog_tag, author, catalog_id, author_id)
                   VALUES (:title, :keywords, :moment, :content, :catalog_tag, :author, :c_id, :a_id)");
+            }
             $stmt->bindParam(":title", $this->title);
             $stmt->bindParam(":keywords", $this->keywords);
             $stmt->bindParam(":moment", $this->moment);
@@ -104,7 +132,10 @@ class Post{
             $a_id = $author_info["id"];
             $stmt->bindParam(":a_id", $a_id, PDO::PARAM_INT);
             $stmt->execute();
-            $this->id = $this->db->lastInsertId();
+            if ($id != null){
+                $this->id = $id;
+            }else
+                $this->id = $this->db->lastInsertId();
             return $this->id;
         }catch (PDOException $err){
             error_handler($err, "inserting Post( $this->title )", true);
@@ -113,18 +144,20 @@ class Post{
 
     }
 
-    public function update($id){
-        $post = static::getPostByField($this->db, static::FIELD_ID, $id, PDO::PARAM_INT);
-        if (!$post)
-            return false;
-//        $this->db = connect_to_database();
-//        $stmt = $this->db->prepare("UPDATA");
-        /*
-         * "INSERT INTO Posts
-                  (title, keywords, moment, content, catalog_tag, author, catalog_id, author_id)
-                  VALUES (:title, :keywords, :moment, :content, :catalog_tag, :author, :c_id, :a_id)"
-         */
-//        $stmt = $this->db->prepare("UPDATE Posts SET title")
+    public static function toDisplayFormat(&$posts, $preview_length=200, $preview_tail="..."){
+        // 处理一些信息
+        for($i = 0 ; $i < count($posts) ; ++$i){
+            if (mb_strstr($posts[$i]["keywords"], ";"))
+                $posts[$i]["keywords"] = explode(";", $posts[$i]["keywords"]);
+            else
+                $posts[$i]["keywords"] = array($posts[$i]["keywords"]);
+            $posts[$i]["content"] =
+                static::extract_content($posts[$i]["content"], $preview_length, $preview_tail);
+
+            // 不显示具体的时间
+            $timestamp = strtotime($posts[$i]["moment"]);
+            $posts[$i]["moment"] = date("Y/m/d", $timestamp);
+        }
     }
 
     public static function get_pagination($db, $page_num, $page_size){
@@ -147,7 +180,7 @@ class Post{
         }
     }
 
-    public static function extract_content($content, $length=60, $tail="..."){
+    public static function extract_content($content, $length=200, $tail="..."){
         $content = strip_tags($content);
         if (mb_strlen($content) <= $length)
             return $content;
