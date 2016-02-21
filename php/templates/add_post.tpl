@@ -11,25 +11,19 @@
     <script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
     <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
 
-    {literal}
-        <script>
-            $(function () {
-                $("#title").focus();
-            })
-        </script>
-    {/literal}
-
     {*You should enclose your JS code using the {literal}{/literal} tag if you haven't.
     This prevents Smarty from parsing what's in between
     so that the JS code is not being mistaken for PHP code.*}
     {literal}
         <script type="text/javascript">
-            tinymce.init({
+            tinyMCE.init({
                 fontsize_formats: "8pt 10pt 12pt 14pt 18pt 24pt 36pt",
                 selector: '#content',
                 theme: 'modern',
                 width: "100%",
                 height: 260,
+                init_instance_callback: "setContentCallback",   // 设置回调函数，它会传这个instance作为参数
+                                                                //
                 plugins: [
                     'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
                     'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
@@ -47,6 +41,26 @@
             });
         </script>
     {/literal}
+
+    {*一些初始化操作*}
+    {literal}
+        <script>
+            $(function () {
+                $("#title").focus();
+            });
+        </script>
+    {/literal}
+
+    {literal}
+        <script>
+            // 用来设置tinyMCE初始值的回调函数
+            function setContentCallback(instance){
+                var content = $("#post_content").html().trim();
+                instance.setContent(content);
+            }
+        </script>
+    {/literal}
+
     <title>xiaofud - POST</title>
 </head>
 <body>
@@ -67,15 +81,6 @@
                     {*标题*}
                     <div class="form-group">
                         <label class="sr-only" for="title">Title</label>
-                        {*{if isset($post)}*}
-                            {*<input class="form-control" id="title" type="text"*}
-                                   {*name="title" placeholder="Title" required*}
-                                   {*value="{$post["title"]}"*}
-                            {*>*}
-                        {*{else}*}
-                            {*<input class="form-control" id="title" type="text"*}
-                                   {*name="title" placeholder="Title" required>*}
-                        {*{/if}*}
                         {if isset($post)}
                             <input class="form-control" id="title" type="text"
                                    name="title" placeholder="Title" required value="{$post["title"]}">
@@ -165,9 +170,6 @@
                     <div class="form-group" >
                         <label  class="sr-only" for="content">Body</label>
                         <textarea class="form-control" id="content" name="content">
-                            {if isset($post)}
-                                {$post["content"]}
-                            {/if}
                         </textarea>
                     </div>
                     {*内容*}
@@ -181,6 +183,12 @@
             <div class="col-md-2">
                 {*Leave Blank*}
             </div>
+        </div>
+        {*用于初始化tinyMCE的内容*}
+        <div id="post_content" style="display: none">
+            {if isset($post)}
+                {$post["content"]}
+            {/if}
         </div>
     </div>
 </body>

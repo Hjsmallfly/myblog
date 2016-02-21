@@ -109,7 +109,10 @@ author_id=:a_id WHERE id=$id");
                 }
                 // 分类
                 if ($this->catalog_tag != $post["catalog_tag"]){
+                    // 减少原来的分类里面的Post数量
                     Catalog::modifyPostCount($this->db, $post["catalog_id"], true);
+                    // 增加新增的分类里面的Post数量
+                    Catalog::modifyPostCount($this->db, $catalog_info["id"]);
                 }
 
             }else{

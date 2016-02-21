@@ -9,6 +9,8 @@
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>-->
     <!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
     <script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../lib/google-code-prettify/prettify.css">
+    <script src="../lib/google-code-prettify/prettify.js"></script>
     {literal}
     <script>
         function delete_post(id){
@@ -33,7 +35,7 @@
     {/literal}
     <title>Post - view page</title>
 </head>
-<body>
+<body onload="prettyPrint();">
     <div id="myNav">
         {include file="navbar.tpl"}
     </div>
