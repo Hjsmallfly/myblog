@@ -6,9 +6,9 @@
  * Time: 上午1:25
  */
 
-require_once("error_handler.php");
+require_once($_SERVER["DOCUMENT_ROOT"] . "/php/helpers/error_handler.php");
 require_once("connect.php");
-require_once("classes/TableCreator.php");
+require_once($_SERVER["DOCUMENT_ROOT"] . "/php/classes/models/TableCreator.php");
 
 $db = connect_to_database();
 
