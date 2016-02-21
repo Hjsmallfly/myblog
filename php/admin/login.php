@@ -7,7 +7,6 @@
  */
 // 开启session
 session_start();
-
 // 暂时先简单记录一下登陆
 define("USER_FILE", "user.txt");
 
@@ -25,11 +24,11 @@ function login(){
             $_SESSION["logged"] = true;
             $_SESSION["username"] = $_POST["username"];
             if (isset($_SESSION["go_to_post_page"])) {
-                header("Location: addPost.php");
+                header("Location: /php/admin/addPost.php");
                 return;
             }
             else {
-                header("Location: index.php");
+                header("Location: /index.php");
                 return;
             }
         } else {
@@ -37,14 +36,14 @@ function login(){
             return;
         }
     }elseif(isset($_SESSION["logged"])){
-        header("Location: index.php");
+        header("Location: /index.php");
         return;
     }
 }
 
 login();
 
-require_once("/usr/local/lib/smarty-3.1.28/libs/Smarty.class.php");
-
-$smarty = new Smarty();
+require_once($_SERVER["DOCUMENT_ROOT"] . "/configs/global_config.php");
+//$smarty = new Smarty();
+$smarty = get_smarty_instance();
 $smarty->display("login.tpl");

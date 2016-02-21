@@ -15,7 +15,7 @@
 //      website VARCHAR(140) CHARACTER SET utf8 # 主页
 //    )
 //");
-require_once( dirname(__DIR__) . DIRECTORY_SEPARATOR . "error_handler.php");
+require_once(dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . "/helpers/error_handler.php");
 
 class Author{
 

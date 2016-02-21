@@ -8,8 +8,8 @@
 
 session_start();
 
-require_once("database/connect.php");
-require_once("database/classes/Post.php");
+require_once($_SERVER["DOCUMENT_ROOT"] . "/php/database/connect.php");
+require_once($_SERVER["DOCUMENT_ROOT"] . "/php/classes/models/Post.php");
 
 // 检查登陆状态
 

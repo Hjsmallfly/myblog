@@ -17,7 +17,7 @@
 ");
  */
 
-require_once( dirname(__DIR__) . DIRECTORY_SEPARATOR . "error_handler.php");
+require_once(dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . "/helpers/error_handler.php");
 
 class Catalog{
     // 常量定义用于查找数据

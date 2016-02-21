@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.min.css">
-    <script src="../lib/jquery-2.2.0.min.js"></script>
-    <script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/lib/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <script src="/lib/jquery-2.2.0.min.js"></script>
+    <script src="/lib/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
     <title>xiaofud - HOME</title>
 </head>
 <body>

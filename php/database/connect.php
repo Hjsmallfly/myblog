@@ -8,8 +8,8 @@
 
 // 连接数据库
 
-require_once("config/config.php");
-require_once("error_handler.php");
+require_once(__DIR__ . "/config/config.php");
+require_once(dirname(__DIR__) . "/helpers/error_handler.php");
 
 function connect_to_database(){
     global $USERNAME, $PASSWORD;

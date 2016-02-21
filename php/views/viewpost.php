@@ -14,7 +14,7 @@ session_start();
 
 // 检查参数
 if (!isset($_GET["id"])){
-    header("Location: index.php");
+    header("Location: /index.php");
 }
 
 $id = $_GET["id"];
@@ -23,13 +23,13 @@ if (!is_numeric($id))
 
 $id = intval($id);
 
-require_once("database/connect.php");
-require_once("database/classes/Post.php");
+require_once($_SERVER["DOCUMENT_ROOT"] . "/php/database/connect.php");
+require_once($_SERVER["DOCUMENT_ROOT"] . "/php/classes/models/Post.php");
 $db = connect_to_database();
 $post = Post::getPostByField($db, Post::FIELD_ID, $id, PDO::PARAM_INT);
 
 if (!$post) { // 没有这篇文件的话
-    header("Location: index.php");
+    header("Location: /index.php");
     return;
 }
 // 修改浏览次数
@@ -37,9 +37,9 @@ Post::modifyPostCount($db, $post["id"]);
 
 // 把keywords分割为数组
 $post["keywords"] = explode(";", $post["keywords"]);
-require_once("/usr/local/lib/smarty-3.1.28/libs/Smarty.class.php");
-$smarty = new Smarty();
-
+require_once($_SERVER["DOCUMENT_ROOT"] . "/configs/global_config.php");
+//$smarty = new Smarty();
+$smarty = get_smarty_instance();
 $smarty->assign("post", $post);
 //// 生成静态文件(也可以用smarty的fetch方法来获取模板的内容)
 //ob_start();

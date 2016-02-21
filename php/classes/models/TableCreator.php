@@ -9,7 +9,7 @@
 
 //require_once("../config/config.php");
 //require_once("../connect.php");
-require_once( dirname(__DIR__) . DIRECTORY_SEPARATOR . "error_handler.php");
+require_once(dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . "/helpers/error_handler.php");
 
 class TableCreator{
 

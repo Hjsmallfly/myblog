@@ -8,10 +8,11 @@
 // 开启session
 session_start();
 
-require_once("/usr/local/lib/smarty-3.1.28/libs/Smarty.class.php");
-require_once("database/connect.php");
-require_once("database/classes/Post.php");
-require_once("database/classes/Catalog.php");
+
+
+require_once($_SERVER["DOCUMENT_ROOT"] .  "/php/database/connect.php");
+require_once($_SERVER["DOCUMENT_ROOT"] .  "/php/classes/models/Post.php");
+require_once($_SERVER["DOCUMENT_ROOT"] .  "/php/classes/models/Catalog.php");
 // debug
 //$_SESSION["logged"] = true;
 
@@ -37,7 +38,7 @@ if (isset($_POST["title"])){
 
     $post_id = $post->save($id);
 //    var_dump($post_info);
-    $location_str = "Location: viewpost.php?id=" . $post_id;
+    $location_str = "Location: /php/views/viewpost.php?id=" . $post_id;
 //    var_dump($post_id);
     header($location_str);
     return;
@@ -46,9 +47,10 @@ if (isset($_POST["title"])){
 // 取消跳转变量
 unset($_SESSION["go_to_post_page"]);
 
+require_once($_SERVER["DOCUMENT_ROOT"] . "/configs/global_config.php");
 // 获取数据库连接
 $db = connect_to_database();
-$smarty = new Smarty();
+$smarty = get_smarty_instance();
 $catalogs = Catalog::get_all_catalogs($db);
 $smarty->assign("catalogs", $catalogs);
 

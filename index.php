@@ -8,6 +8,8 @@
 // 开启session
 session_start();
 
+require_once("configs/global_config.php");
+
 define("POSTS_PER_PAGE", 10);
 
 $page_num = 1;
@@ -17,8 +19,8 @@ if (isset($_GET["p"]) && is_numeric($_GET["p"])){
 }
 
 // 获取首页文章信息
-require_once("database/connect.php");
-require_once("database/classes/Post.php");
+require_once("$PHP_SRC_DIR/database/connect.php");
+require_once("$PHP_SRC_DIR/classes/models/Post.php");
 $db = connect_to_database();
 
 // 默认一页十张
@@ -26,7 +28,7 @@ $this_page = Post::get_pagination($db, $page_num, POSTS_PER_PAGE);
 Post::toDisplayFormat($this_page);
 
 // 获取所有分类
-require_once("database/classes/Catalog.php");
+require_once("$PHP_SRC_DIR/classes/models/Catalog.php");
 $catalogs = Catalog::get_all_catalogs($db);
 
 // 处理分页信息
@@ -53,8 +55,10 @@ $page_info = [
     "next_page" => $next_page
 ];
 
-require_once("/usr/local/lib/smarty-3.1.28/libs/Smarty.class.php");
-$smarty = new Smarty();
+//require_once("/usr/local/lib/smarty-3.1.28/libs/Smarty.class.php");
+$smarty = get_smarty_instance();
+$smarty->assign("lib", $LIBRARY_DIR);
+$smarty->assign("php_dir", $PHP_SRC_DIR);
 $smarty->assign("page_info", $page_info);
 $smarty->assign("post_previews", $this_page);
 $smarty->assign("catalog_items", $catalogs);

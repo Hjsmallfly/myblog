@@ -1,7 +1,7 @@
 # lib files
 lib/
 
-# cached templates
+# compiled templates
 templates_c/
 
 # database authenciation info

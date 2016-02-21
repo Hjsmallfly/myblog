@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/lib/bootstrap-3.3.5-dist/css/bootstrap.min.css">
     <!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
-    <script src="../lib/jquery-2.2.0.min.js"></script>
+    <script src="/lib/jquery-2.2.0.min.js"></script>
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>-->
     <!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
-    <script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+    <script src="/lib/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
 
     {literal}
         <script>
@@ -35,7 +35,7 @@
                     </div>
                 {/if}
 
-                <form action="login.php" method="POST" role="form">
+                <form action="/php/admin/login.php" method="POST" role="form">
                     <div class="form-group form-group-sm">
                         <label for="username" class="sr-only">Username</label>
                         <input required placeholder="username" id="username" name="username" type="text" class="form-control">

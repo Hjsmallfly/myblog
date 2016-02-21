@@ -28,7 +28,7 @@
 //);
 
 
-require_once( dirname(__DIR__) . DIRECTORY_SEPARATOR . "error_handler.php");
+require_once(dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . "/helpers/error_handler.php");
 require_once(__DIR__ . DIRECTORY_SEPARATOR . "Author.php");
 require_once(__DIR__ . DIRECTORY_SEPARATOR . "Catalog.php");
 

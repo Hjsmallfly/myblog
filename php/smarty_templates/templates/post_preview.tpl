@@ -2,7 +2,7 @@
 {foreach $post_previews as $post}
     <!-- One Post -->
     <div class="post_title">
-        <a href="viewpost.php?id={$post["id"]}"><h3 >{$post["title"]}</h3></a>
+        <a href="/php/views/viewpost.php?id={$post["id"]}"><h3 >{$post["title"]}</h3></a>
     </div>
     <div class="post_info">
         <span class="post_author">
@@ -33,7 +33,7 @@
     </div>
 
     <span class="pull-right">
-        <a href="viewpost.php?id={$post["id"]}">Read More</a>
+        <a href="/php/views/viewpost.php?id={$post["id"]}">Read More</a>
     </span>
 
     <div class="spacing_per_post">
