@@ -53,4 +53,7 @@ $smarty = new Smarty();
 $smarty->assign("pages", $pages);
 $smarty->assign("post_previews", $page);
 $smarty->assign("catalog_items", $catalogs);
+//$smarty->display("navbar.tpl");
 $smarty->display("index.tpl");
+
+// 注意 smarty 的display可以多次使用，所以可以不用在一个模板中包含另一个模板

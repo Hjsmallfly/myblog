@@ -20,16 +20,25 @@ function login(){
     if (isset($_SESSION["failed"]))
         unset($_SESSION["failed"]);
 
-    if (isset($_POST["username"]) || isset($_POST["password"])) {
+    if (isset($_POST["username"]) && isset($_POST["password"])) {
         if ( $_POST["username"] == $user_obj["username"] && $_POST["password"] == $user_obj["password"] ) {
             $_SESSION["logged"] = true;
             $_SESSION["username"] = $_POST["username"];
-            header("Location: index.php");
+            if (isset($_SESSION["go_to_post_page"])) {
+                header("Location: addPost.php");
+                return;
+            }
+            else {
+                header("Location: index.php");
+                return;
+            }
         } else {
             $_SESSION["failed"] = true;
+            return;
         }
     }elseif(isset($_SESSION["logged"])){
         header("Location: index.php");
+        return;
     }
 }
 

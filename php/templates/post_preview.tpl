@@ -1,3 +1,4 @@
+
 {foreach $post_previews as $post}
     <!-- One Post -->
     <div class="post_title">

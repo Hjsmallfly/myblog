@@ -22,27 +22,16 @@
     </span>
 </div>
 
-{*<div class="spacing_after_title">*}
-    {*<br />*}
-{*</div>*}
-
 <div class="row">
     <div class="post_body col-md-offset-2 col-md-8">
-        <hr />
-        {$post["content"]}
+        <div id="content_body">
+            <hr />
+            {$post["content"]}
+            <hr />
+        </div>
     </div>
     <div class="col-md-2">
 
     </div>
 </div>
-
-
-{*<span class="pull-right">*}
-    {*<a href="{$post["url"]}">Read More</a>*}
-{*</span>*}
-
-{*<div class="spacing_per_post">*}
-    {*<br />*}
-    {*<hr />*}
-{*</div>*}
 <!-- One Post -->

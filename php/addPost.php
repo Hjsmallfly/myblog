@@ -15,19 +15,15 @@ require_once("database/classes/Catalog.php");
 // debug
 //$_SESSION["logged"] = true;
 
-if (!isset($_SESSION["logged"]))
+if (!isset($_SESSION["logged"])) {
+    // 设置一个session变量用于登陆后的跳转
+    $_SESSION["go_to_post_page"] = true;
     header("Location: login.php");
+    return;
+}
 
 
 if (isset($_POST["title"])){
-//    var_dump($_POST);
-//    return;
-//    'title' => string 'Hello' (length=5)
-//    'new_catalog' => string '' (length=0)
-//    'username' => string 'smallfly' (length=8)
-//    'catalog' => string 'life' (length=4)
-//    'keywords' => string '' (length=0)
-//    'content' => string '' (length=0)
     $catalog = mb_strlen($_POST["new_catalog"]) > 0 ? $_POST["new_catalog"] : $_POST["catalog"];
     $db = connect_to_database();
     $post = new Post($db, $_POST["title"], $_POST["content"],
@@ -37,9 +33,12 @@ if (isset($_POST["title"])){
 //    var_dump($post_info);
     $location_str = "Location: viewpost.php?id=" . $post_id;
 //    var_dump($post_id);
-    error_log($location_str);
     header($location_str);
+    return;
 }
+
+// 取消跳转变量
+unset($_SESSION["go_to_post_page"]);
 
 $db = connect_to_database();
 

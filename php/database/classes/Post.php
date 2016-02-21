@@ -148,9 +148,9 @@ class Post{
             $stmt->bindParam(":val", $val, $field_type);
             $stmt->execute();
             // 失败返回的是false
-            $author = $stmt->fetch(PDO::FETCH_ASSOC);
+            $post = $stmt->fetch(PDO::FETCH_ASSOC);
 //            var_dump($stmt->debugDumpParams());
-            return $author;
+            return $post;
         }catch (PDOException $err){
             error_handler($err, "get Post by [$field] => $val ", true);
             return null;
@@ -188,6 +188,29 @@ class Post{
                 error_handler($err, "increaseViewedTimes($post_id)", true);
                 return false;
             }
+        }
+    }
+
+
+    public static function delete_post($db, $post_id, $username){
+        // $username 用于 验证 该用户是否有权力删除这篇post
+        $post = self::getPostByField($db, static::FIELD_ID, $post_id, PDO::PARAM_INT);
+        if (!$post)
+            return json_encode(["ERROR" => "no such post"]);
+//        if ($post["author"] != $username)
+//            return json_encode(["ERROR" => "not allowed"]);
+        try {
+            $stmt = $db->prepare("DELETE FROM Posts WHERE id=:post_id");
+            $stmt->bindParam(":post_id", $post_id);
+            $stmt->execute();
+            if ($stmt->rowCount()) {
+                return true;
+            } else {
+                return false;
+            }
+        }catch(PDOException $err){
+            error_handler($err, "deleting post[$post_id]", true);
+            return false;
         }
     }
 
