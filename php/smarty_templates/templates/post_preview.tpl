@@ -12,7 +12,7 @@
         </span>
         <span class="tags">
             <span class="label label-danger glyphicon glyphicon-time">{$post["moment"]}</span>
-            <a href="viewtag.php?={$post["catalog_id"]}"><span class="label label-primary"> {$post["catalog_tag"]}</span></a>
+            <a href="/php/views/viewtag.php?tag_id={$post["catalog_id"]}"><span class="label label-primary"> {$post["catalog_tag"]}</span></a>
             {*貌似变量名称不能是tag*}
             {foreach $post["keywords"] as $keyword}
                 {if $keyword != ""}
