@@ -95,9 +95,11 @@ class Post{
             return false;
         try{
             if ($id != null){
-                $post = Post::getPostByField($this->db, static::FIELD_ID, $id, PDO::PARAM_INT);
-                if (!$post)
+                $posts = Post::getPostByField($this->db, static::FIELD_ID, $id, PDO::PARAM_INT);
+                // size 为 0 的array在条件判断语句处也会视为false
+                if (!$posts)
                     return false;
+                $post = $posts[0];  // 因为id是独特的
 //                $this->db = connect_to_database();
                 // 注意 执行 UPDATE 的时候一定要记得带上 WHERE 条件， 不然会全部都改掉!
                 $stmt = $this->db->prepare("UPDATE Posts SET title=:title, keywords=:keywords,
@@ -197,10 +199,11 @@ author_id=:a_id WHERE id=$id");
 //            $stmt->bindParam(":field", $field);
             $stmt->bindParam(":val", $val, $field_type);
             $stmt->execute();
-            // 失败返回的是false
-            $post = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // 失败返回的是size为0的数组
+            $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 //            var_dump($stmt->debugDumpParams());
-            return $post;
+            return $posts;
         }catch (PDOException $err){
             error_handler($err, "get Post by [$field] => $val ", true);
             return null;
@@ -222,9 +225,10 @@ author_id=:a_id WHERE id=$id");
 
     public static function modifyPostCount($db, $post_id, $negative=false){
 //        $db = connect_to_database();
-        $post = static::getPostByField($db, static::FIELD_ID, $post_id, PDO::PARAM_INT);
-        if ($post){
+        $posts = static::getPostByField($db, static::FIELD_ID, $post_id, PDO::PARAM_INT);
+        if ($posts){
             try {
+                $post = $posts[0];
                 $stmt = $db->prepare("UPDATE Posts SET viewed_times=:viewed_times where id=:id");
                 $stmt->bindParam(":id", $post_id);
                 if (!$negative)
@@ -244,12 +248,13 @@ author_id=:a_id WHERE id=$id");
 
     public static function delete_post($db, $post_id, $username){
         // $username 用于 验证 该用户是否有权力删除这篇post
-        $post = self::getPostByField($db, static::FIELD_ID, $post_id, PDO::PARAM_INT);
-        if (!$post)
+        $posts = self::getPostByField($db, static::FIELD_ID, $post_id, PDO::PARAM_INT);
+        if (!$posts)
             return json_encode(["ERROR" => "no such post"]);
 //        if ($post["author"] != $username)
 //            return json_encode(["ERROR" => "not allowed"]);
         try {
+            $post = $posts[0];
             $stmt = $db->prepare("DELETE FROM Posts WHERE id=:post_id");
             $stmt->bindParam(":post_id", $post_id);
             $stmt->execute();

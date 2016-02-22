@@ -62,6 +62,7 @@ $smarty->assign("php_dir", $PHP_SRC_DIR);
 $smarty->assign("page_info", $page_info);
 $smarty->assign("post_previews", $this_page);
 $smarty->assign("catalog_items", $catalogs);
-//$smarty->display("navbar.tpl");
 $smarty->display("index.tpl");
+$smarty->display("pagination.tpl");
+$smarty->display("footer.tpl");
 // 注意 smarty 的display可以多次使用，所以可以不用在一个模板中包含另一个模板

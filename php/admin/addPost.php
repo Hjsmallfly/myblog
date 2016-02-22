@@ -58,8 +58,9 @@ $smarty->assign("catalogs", $catalogs);
 if (isset($_GET["id"]) && is_numeric($_GET["id"])){
     $id = intval($_GET["id"]);
     // 获取文章信息
-    $post = Post::getPostByField($db, Post::FIELD_ID, $id, PDO::PARAM_INT);
-    if ($post){
+    $posts = Post::getPostByField($db, Post::FIELD_ID, $id, PDO::PARAM_INT);
+    if ($posts){
+        $post = $posts[0];
         $smarty->assign("post", $post);
     }
 }

@@ -26,12 +26,15 @@ $id = intval($id);
 require_once($_SERVER["DOCUMENT_ROOT"] . "/php/database/connect.php");
 require_once($_SERVER["DOCUMENT_ROOT"] . "/php/classes/models/Post.php");
 $db = connect_to_database();
-$post = Post::getPostByField($db, Post::FIELD_ID, $id, PDO::PARAM_INT);
+$posts = Post::getPostByField($db, Post::FIELD_ID, $id, PDO::PARAM_INT);
 
-if (!$post) { // 没有这篇文件的话
+if (!$posts) { // 没有这篇文件的话
     header("Location: /index.php");
     return;
 }
+
+$post = $posts[0];
+
 // 修改浏览次数
 Post::modifyPostCount($db, $post["id"]);
 
