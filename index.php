@@ -25,7 +25,7 @@ $db = connect_to_database();
 
 // 默认一页十张
 $this_page = Post::get_pagination($db, $page_num, POSTS_PER_PAGE);
-Post::toDisplayFormat($this_page);
+Post::toPreviewFormat($this_page);
 
 // 获取所有分类
 require_once("$PHP_SRC_DIR/classes/models/Catalog.php");

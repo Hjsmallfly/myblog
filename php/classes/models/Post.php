@@ -149,7 +149,7 @@ author_id=:a_id WHERE id=$id");
 
     }
 
-    public static function toDisplayFormat(&$posts, $preview_length=200, $preview_tail="..."){
+    public static function toPreviewFormat(&$posts, $preview_length=100, $preview_tail="..."){
         // 处理一些信息
         for($i = 0 ; $i < count($posts) ; ++$i){
             if (mb_strstr($posts[$i]["keywords"], ";"))
@@ -186,10 +186,15 @@ author_id=:a_id WHERE id=$id");
     }
 
     public static function extract_content($content, $length=200, $tail="..."){
-        $content = strip_tags($content);
-        if (mb_strlen($content) <= $length)
-            return $content;
-        return mb_substr($content, 0, $length) . $tail;
+//        $content = strip_tags(trim($content), "<a><p><br>");
+//        if (mb_strlen($content) <= $length)
+//            return $content;
+//        return mb_substr($content, 0, $length) . $tail;
+//        return $content;
+        require_once($_SERVER["DOCUMENT_ROOT"] . "/php/helpers/HtmlCutterCutter.php");
+//        require_once($_SERVER["DOCUMENT_ROOT"] . "/php/helpers/excerpt.php");
+//        return getPostPreview(trim($content), $length);
+        return HtmlCutter::trim("<meta charset='UTF-8'>" . trim($content), 140);
     }
     public static function getPostByField($db, $field, $val, $field_type=PDO::PARAM_STR){
         try{

@@ -20,7 +20,7 @@ require_once($_SERVER["DOCUMENT_ROOT"] . "/php/classes/models/Post.php");
 $db = connect_to_database();
 $posts = Post::getPostByField($db, Post::FIELD_CATALOG_ID, intval($_GET["tag_id"]), PDO::PARAM_INT);
 
-Post::toDisplayFormat($posts);
+Post::toPreviewFormat($posts);
 
 // 获取所有分类
 require_once($_SERVER["DOCUMENT_ROOT"] . "/php/classes/models/Catalog.php");
