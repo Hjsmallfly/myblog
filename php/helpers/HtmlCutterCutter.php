@@ -17,6 +17,7 @@ public static function trim($html, $maxLen = 25){
     $dom = new DomDocument();
     $dom->loadHTML($html);
 
+    //  即实例化当前类的一个对象
     $html = new static();
     $toRemove = $html->walk($dom, $maxLen);
     // remove any nodes that passed our limit
@@ -41,7 +42,7 @@ protected function walk(DomNode $node, $maxLen){
         // only text nodes should have text,
         // so do the splitting here
         if($node instanceof DomText){
-            $this->totalLen += $nodeLen =  mb_strlen($node->nodeValue);
+            $this->totalLen += ($nodeLen =  mb_strlen($node->nodeValue));
         // use mb_strlen / mb_substr for UTF-8 support
             if($this->totalLen > $maxLen){
                 $node->nodeValue = mb_substr($node->nodeValue, 0, $nodeLen - ($this->totalLen - $maxLen)) . '...';

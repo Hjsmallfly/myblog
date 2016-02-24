@@ -57,11 +57,11 @@ $page_info = [
 
 //require_once("/usr/local/lib/smarty-3.1.28/libs/Smarty.class.php");
 $smarty = get_smarty_instance();
-$smarty->assign("lib", $LIBRARY_DIR);
-$smarty->assign("php_dir", $PHP_SRC_DIR);
 $smarty->assign("page_info", $page_info);
 $smarty->assign("post_previews", $this_page);
 $smarty->assign("catalog_items", $catalogs);
+
+//$smarty->display("navbar.tpl");
 $smarty->display("index.tpl");
 $smarty->display("pagination.tpl");
 $smarty->display("footer.tpl");

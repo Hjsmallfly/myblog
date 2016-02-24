@@ -14,11 +14,6 @@
 //var_dump(realpath( __DIR__ ));
 
 $BLOG_ROOT_DIR = realpath(dirname(__DIR__));
-
-$LIBRARY_DIR = $BLOG_ROOT_DIR . DIRECTORY_SEPARATOR . "lib";
-$CSS_DIR = $BLOG_ROOT_DIR . DIRECTORY_SEPARATOR . "css";
-$JS_DIR = $BLOG_ROOT_DIR . DIRECTORY_SEPARATOR . "js";
-
 $PHP_SRC_DIR = $BLOG_ROOT_DIR . DIRECTORY_SEPARATOR . "php";
 
 // smarty 相关路径
@@ -28,10 +23,9 @@ $SMARTY_CONFIGS_DIR = $PHP_SRC_DIR . "/smarty_templates/configs";
 $SMARTY_CACHE_DIR = $PHP_SRC_DIR  . "/smarty_templates/cache";
 
 
-
 function get_smarty_instance(){
-    global $LIBRARY_DIR, $SMARTY_TEMPLATES_DIR, $SMARTY_TEMPLATES_C_DIR, $SMARTY_CONFIGS_DIR, $SMARTY_CACHE_DIR;
-    require_once("$LIBRARY_DIR/smarty-3.1.28/libs/Smarty.class.php");
+    global $BLOG_ROOT_DIR, $SMARTY_TEMPLATES_DIR, $SMARTY_TEMPLATES_C_DIR, $SMARTY_CONFIGS_DIR, $SMARTY_CACHE_DIR;
+    require_once($BLOG_ROOT_DIR .  "/lib/smarty-3.1.28/libs/Smarty.class.php");
     $smarty = new Smarty();
     $smarty->setTemplateDir($SMARTY_TEMPLATES_DIR);
     $smarty->setCompileDir($SMARTY_TEMPLATES_C_DIR);

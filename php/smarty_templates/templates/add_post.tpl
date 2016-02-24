@@ -71,8 +71,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-offset-2 col-md-8">
-                <form action="addPost.php" method="POST" role="form">
-
+                <form action="/php/admin/addPost.php" method="POST" role="form">
                     {*用于判断是否是修改内容*}
                     {if isset($post)}
                         <input name="post_id" id="post_id" type="hidden" value="{$post["id"]}">

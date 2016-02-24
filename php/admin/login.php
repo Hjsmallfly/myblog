@@ -46,4 +46,5 @@ login();
 require_once($_SERVER["DOCUMENT_ROOT"] . "/configs/global_config.php");
 //$smarty = new Smarty();
 $smarty = get_smarty_instance();
+//$smarty->display("navbar.tpl");
 $smarty->display("login.tpl");

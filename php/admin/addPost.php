@@ -65,4 +65,5 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
     }
 }
 
+//$smarty->display("navbar.tpl");
 $smarty->display("add_post.tpl");

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--from http://www.cnblogs.com/hooyes/archive/2012/08/01/ajax_upload_file.html-->
+    <title>Html5 Ajax 上传文件</title>
+    <script src="/lib/jquery-2.2.0.min.js"></script>
+    <script>
+        $(function () {
+            $("#jquery_ajax_upload_button").click(function () {
+//                alert("Hello Jquery");
+                uploadPicture();
+            });
+
+        });
+        // http://abandon.ie/notebook/simple-file-uploads-using-jquery-ajax
+        function uploadPicture() {
+//            alert("before post");
+//            var fileObj = document.getElementById("file").files[0];
+            var fileDOM = $("#file")[0];    // $("#id") is NOT EQUAL TO getElementById("id")
+            var fileObj = fileDOM.files[0];
+            var action_url = "uploadIMG.php";
+            var form = new FormData();
+            form.append("img_name", "testing");
+            form.append("fileToUpload", fileObj);                           // 文件对象
+            form.append("submit", "submit");
+            $.ajax({
+                url: action_url,
+                type: 'POST',
+                data: form,
+                cache: false,
+                processData: false, // Don't process the files
+                contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+                success: function (data, textStatus, jqXHR) {
+                    alert(data);
+                }
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        function uploadFile() {
+            var fileObj = document.getElementById("file").files[0]; // 获取文件对象
+            var FileController = "uploadIMG.php";                    // 接收上传文件的后台地址
+            // FormData 对象
+            var form = new FormData();
+            form .append("img_name", "testing");
+            form.append("fileToUpload", fileObj);                           // 文件对象
+            form.append("submit", "submit");
+            // XMLHttpRequest 对象
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", FileController, true);
+            xhr.onreadystatechange = function(){
+                if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+                    alert(xhr.responseText);
+                }
+            };
+            xhr.send(form);
+        }
+    </script>
+</head>
+<body>
+<input type="file" id="file" name="myfile" />
+<input type="button" onclick="uploadFile()" value="上传" />
+<button type="button" id="jquery_ajax_upload_button">JQuery_Ajax_Upload</button>
+</body>
+</html>
