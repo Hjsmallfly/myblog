@@ -166,7 +166,7 @@ author_id=:a_id WHERE id=$id");
     }
 
     public static function get_pagination($db, $page_num, $page_size){
-//        $db = connect_to_database();
+    //        $db = connect_to_database();
         // 注意两个地方都需要用相同的方式排序,不然可能造成结果的不一致
         $stmt = $db->prepare("SELECT * FROM (SELECT id FROM Posts ORDER BY moment DESC, id DESC LIMIT :page_size OFFSET :offset) AS lt INNER JOIN
                           Posts ON lt.id = Posts.id ORDER BY Posts.moment DESC, Posts.id DESC");
@@ -200,7 +200,8 @@ author_id=:a_id WHERE id=$id");
         try{
             // PDO 的 prepare 不能绑定字段名
             // 下面这种做法会导致SQL注入的可能性,不过只要对外的接口安全就OK
-            $stmt = $db->prepare("SELECT * FROM Posts WHERE $field=:val");
+            // 结果是按照时间逆序排列的
+            $stmt = $db->prepare("SELECT * FROM Posts WHERE $field=:val ORDER BY moment DESC");
 //            $stmt->bindParam(":field", $field);
             $stmt->bindParam(":val", $val, $field_type);
             $stmt->execute();

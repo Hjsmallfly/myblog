@@ -24,9 +24,9 @@
         {foreach $picture_chunks as $pictures}
             <div class="row">
                 {foreach $pictures as $picture}
-                    <div class="col-md-3">
+                    <div class="col-md-3 ">
                         <a href="/img/{$picture}" target="_blank">
-                        <img class="no-margin img-responsive img-rounded" src="/img/{$picture}" alt="{$picture}">
+                        <img class="img-responsive img-rounded center-block" src="/img/{$picture}" alt="{$picture}">
                         </a>
                     </div>
                 {/foreach}
