@@ -1,8 +1,12 @@
 <?php
 $target_dir = $_SERVER["DOCUMENT_ROOT"] . "/img/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+// sanitize the filename
+$sate_filename = preg_replace("/[^a-z0-9.]/", "", strtolower($_FILES["fileToUpload"]["name"]));
+$target_file = $target_dir . basename($sate_filename);
 $uploadOk = 1;
-$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+$imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+
+define("MAX_SIZE", 5 * 1024 * 1024);    // 5MB
 
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
@@ -21,8 +25,9 @@ if (file_exists($target_file)) {
     $uploadOk = 0;
 }
 // Check file size
-if ($_FILES["fileToUpload"]["size"] > 500000) {
-    echo "Sorry, your file is too large.";
+// bit
+if ($_FILES["fileToUpload"]["size"] > MAX_SIZE) {
+    echo "Sorry, your file is too large." . " " . $_FILES["fileToUpload"]["size"];
     $uploadOk = 0;
 }
 // Allow certain file formats

@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {*default*}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/lib/bootstrap-3.3.5-dist/css/bootstrap.min.css">
     <link rel="shortcut icon" href="/favicon.ico">
     <script src="/lib/jquery-2.2.0.min.js"></script>
     <script src="/lib/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+    {*default*}
     <link rel="stylesheet" href="/lib/highlight/styles/github.css">
     <script src="/lib/highlight/highlight.pack.js"></script>
     <script src="/js/loadHighlightJS.js"></script>
@@ -42,11 +44,11 @@
             <div id="custom-search-input">
                 <div class="input-group col-md-offset-2">
                     <input type="text" class="  search-query form-control" placeholder="Search" />
-                                <span class="input-group-btn">
-                                    <button class="btn btn-danger" type="button">
-                                        <span class=" glyphicon glyphicon-search"></span>
-                                    </button>
-                                </span>
+                    <span class="input-group-btn">
+                        <button class="btn btn-danger" type="button">
+                            <span class=" glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
                 </div>
             </div>
             <br />

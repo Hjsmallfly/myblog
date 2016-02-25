@@ -12,3 +12,6 @@ user.txt
 
 # testing folder
 /testing
+
+# uploading script
+upload_lib_to_server.sh
