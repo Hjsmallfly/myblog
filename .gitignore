@@ -4,8 +4,11 @@ lib/
 # compiled templates
 templates_c/
 
-# database authenciation info
+# database authentication info
 authentication_file.txt
 
 # user_info
 user.txt
+
+# testing folder
+/testing

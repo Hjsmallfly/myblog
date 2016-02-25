@@ -9,33 +9,15 @@
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>-->
     <!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
     <script src="/lib/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/lib/google-code-prettify/prettify.css">
-    <script src="/lib/google-code-prettify/prettify.js"></script>
-    {literal}
-    <script>
-        function delete_post(id){
-            // 使用AJAX删除该文章
-//            alert("deleting " + id);
-            var sure = confirm("Are You Sure To Delete This Post?");
-            if (sure == true) {
-                $.get("/php/admin/delete_post.php?id=" + id, function (data, status) {
-//                    alert(data);
-                    var result = JSON.parse(data);
-                    if (!("ERROR" in result)){
-//                        alert("DELETED!");
-                        // 跳转
-                        window.location = "/index.php";
-                    }else{
-                        alert("FAILED TO DELETE: " + result["ERROR"]);
-                    }
-                });
-            }
-        }
-    </script>
-    {/literal}
+    <link rel="stylesheet" href="/lib/highlight/styles/github.css">
+    <script src="/lib/highlight/highlight.pack.js"></script>
+    {*语法高亮*}
+    <script src="/js/loadHighlightJS.js"></script>
+    {*发送删除文章的请求*}
+    <script src="/js/deletePost.js"></script>
     <title>Post - view page</title>
 </head>
-<body onload="prettyPrint();">
+<body>
     <div id="myNav">
         {include file="navbar.tpl"}
     </div>

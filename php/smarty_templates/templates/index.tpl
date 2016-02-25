@@ -7,6 +7,9 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <script src="/lib/jquery-2.2.0.min.js"></script>
     <script src="/lib/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/lib/highlight/styles/github.css">
+    <script src="/lib/highlight/highlight.pack.js"></script>
+    <script src="/js/loadHighlightJS.js"></script>
     <title>xiaofud - HOME</title>
 </head>
 <body>
