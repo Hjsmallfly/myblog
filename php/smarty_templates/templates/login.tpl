@@ -35,7 +35,7 @@
                     </div>
                 {/if}
 
-                <form action="/php/admin/login.php" method="POST" role="form">
+                <form action="login.php" method="POST" role="form">
                     <div class="form-group form-group-sm">
                         <label for="username" class="sr-only">Username</label>
                         <input required placeholder="username" id="username" name="username" type="text" class="form-control">
