@@ -33,7 +33,10 @@ if (isset($_POST["title"])){
     }
     $catalog = mb_strlen($_POST["new_catalog"]) > 0 ? $_POST["new_catalog"] : $_POST["catalog"];
     $db = connect_to_database();
-    $post = new Post($db, $_POST["title"], $_POST["content"],
+    // 将 pre tag 里面的<br />替换成 \n
+    $pattern = "#<br\s*\/>(?=(?:(?!<\/?pre>)[\s\S])*<\/pre>)#";
+    $content = preg_replace($pattern, "\n", $_POST["content"]);
+    $post = new Post($db, $_POST["title"], $content,
         $_POST["keywords"], $catalog, $_POST["username"]);
 
     $post_id = $post->save($id);
