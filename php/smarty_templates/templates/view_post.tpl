@@ -9,13 +9,13 @@
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>-->
     <!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
     <script src="/lib/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/lib/highlight/styles/github.css">
+    <link rel="stylesheet" href="/lib/highlight/styles/agate.css">
     <script src="/lib/highlight/highlight.pack.js"></script>
     {*语法高亮*}
     <script src="/js/loadHighlightJS.js"></script>
     {*发送删除文章的请求*}
     <script src="/js/deletePost.js"></script>
-    <title>Post - view page</title>
+    <title>xiaofud - View Post</title>
 </head>
 <body>
     <div id="myNav">
@@ -24,20 +24,21 @@
 
     <div class="container-fluid">
         {include file="post_content.tpl" post=$post}
-    </div>
-    {*编辑区域*}
-    <div id="edit_area" class="col-md-offset-2 col-md-8">
-    {if isset($smarty.session["logged"])}
-        <div id="edit_buttons" class="pull-right">
-            <a class="btn btn-primary" href="/php/admin/addPost.php?id={$post['id']}">
-                <span class="glyphicon glyphicon-edit">Edit</span>
-            </a>
-            <button type="button" class="btn btn-danger" onclick="delete_post({$post['id']})">
-                <span class=>Delete</span>
-            </button>
+
+        {*编辑区域*}
+        <div id="edit_area" class="col-md-offset-2 col-md-8">
+        {if isset($smarty.session["logged"])}
+            <div id="edit_buttons" class="pull-right">
+                <a class="btn btn-primary" href="/php/admin/addPost.php?id={$post['id']}">
+                    <span class="glyphicon glyphicon-edit">Edit</span>
+                </a>
+                <button type="button" class="btn btn-danger" onclick="delete_post({$post['id']})">
+                    <span class=>Delete</span>
+                </button>
+            </div>
+        {/if}
         </div>
-    {/if}
+        {*编辑区域*}
     </div>
-    {*编辑区域*}
 </body>
 </html>

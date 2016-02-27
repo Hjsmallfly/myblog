@@ -21,5 +21,5 @@ tinyMCE.init({
     ],
     style_formats_merge: true, // won't override default style_formats
     content_css: 'css/content.css',
-    toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons | sizeselect | bold italic | fontselect |  fontsizeselect'
+    toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media| forecolor backcolor emoticons | sizeselect | bold italic | fontselect |  fontsizeselect'
 });

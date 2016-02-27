@@ -25,15 +25,14 @@
             <div class="row">
                 {foreach $pictures as $picture}
                     <div class="col-md-3 ">
-                        <a href="/img/{$picture}" target="_blank">
+                    <a href="/img/{$picture}" target="_blank">
                         <img class="img-responsive img-rounded center-block" src="/img/{$picture}" alt="{$picture}">
-                        </a>
+                    </a>
                     </div>
                 {/foreach}
             </div>
             <hr/>
         {/foreach}
-
         <div>
             <br/>
         </div>
@@ -70,7 +69,5 @@
         {/if}
 
     </div>
-
-
 </body>
 </html>

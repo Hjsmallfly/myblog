@@ -257,7 +257,8 @@ author_id=:a_id WHERE id=$id");
         $posts = self::getPostByField($db, static::FIELD_ID, $post_id, PDO::PARAM_INT);
         if (!$posts)
             return json_encode(["ERROR" => "no such post"]);
-//        if ($post["author"] != $username)
+        // smallfly 是管理员
+//        if ($posts[0]["author"] != $username && $posts[0]["author"] != "smallfly")
 //            return json_encode(["ERROR" => "not allowed"]);
         try {
             $post = $posts[0];
@@ -273,6 +274,21 @@ author_id=:a_id WHERE id=$id");
         }catch(PDOException $err){
             error_handler($err, "deleting post[$post_id]", true);
             return false;
+        }
+    }
+
+    public static function search_by_keyword($db, $keyword){
+//        $db = connect_to_database();
+        try{
+            $stmt = $db->prepare("SELECT * FROM Posts WHERE title LIKE ?");
+            $keyword = "%" . trim($keyword) . "%";
+            $stmt->bindParam(1, $keyword, PDO::PARAM_STR);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }catch(PDOException $err){
+            error_handler($err, "search post by keyword", true);
+            return null;
         }
     }
 

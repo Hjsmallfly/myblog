@@ -9,9 +9,17 @@
     <script src="/lib/jquery-2.2.0.min.js"></script>
     <script src="/lib/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
     {*default*}
-    <link rel="stylesheet" href="/lib/highlight/styles/github.css">
+    <link rel="stylesheet" href="/lib/highlight/styles/agate.css">
     <script src="/lib/highlight/highlight.pack.js"></script>
     <script src="/js/loadHighlightJS.js"></script>
+    <script src="/js/search_title.js"></script>
+    <script>
+        $(function () {
+            $("#search_button").click(function () {
+               search_title($("#search_keyword").val());
+            });
+        })
+    </script>
     <title>xiaofud - HOME</title>
 </head>
 <body>
@@ -43,9 +51,9 @@
             {*http://v4-alpha.getbootstrap.com/components/input-group/*}
             <div id="custom-search-input">
                 <div class="input-group col-md-offset-2">
-                    <input type="text" class="  search-query form-control" placeholder="Search" />
+                    <input id="search_keyword" type="text" class="  search-query form-control" placeholder="Search" />
                     <span class="input-group-btn">
-                        <button class="btn btn-danger" type="button">
+                        <button id="search_button" class="btn btn-danger" type="button">
                             <span class=" glyphicon glyphicon-search"></span>
                         </button>
                     </span>

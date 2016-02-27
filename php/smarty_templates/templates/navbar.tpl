@@ -1,5 +1,5 @@
 <!-- 导航栏 -->
-<nav class="navbar navbar-default navbar-static-top">
+<nav class="navbar navbar-inverse navbar-static-top">
     <div id="navbar_div" class="container-fluid"> <!-- 加了这个div可以使Login不太靠向右边 -->
         <div class="navbar-header col-md-1">    <!-- 因为下面的内容框空出里一个列的宽度 -->
             <!--<a class="navbar-brand" href="."></a>-->
