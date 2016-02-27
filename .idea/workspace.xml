@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75b7295f-3783-4b09-9cf8-4fb15116adb3" name="Default" comment="fix a href bug in catalog">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/admin/addPost.php" afterPath="$PROJECT_DIR$/php/admin/addPost.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/search_title.js" afterPath="$PROJECT_DIR$/js/search_title.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/classes/models/Post.php" afterPath="$PROJECT_DIR$/php/classes/models/Post.php" />
     </list>
     <ignored path="myBlog.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,12 +47,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addPost.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="addPost.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/admin/addPost.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6101695">
-              <caret line="40" column="32" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
+            <state vertical-scroll-proportion="-0.6666667">
+              <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Post.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/classes/models/Post.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.851852">
+              <caret line="278" column="0" selection-start-line="278" selection-start-column="0" selection-end-line="278" selection-end-column="0" />
+              <folding>
+                <marker date="1456588991812" expanded="true" signature="3237:3407" placeholder="UPDATE Posts... " />
+                <marker date="1456588991812" expanded="true" signature="4088:4303" placeholder="INSERT INTO Posts... " />
+                <marker date="1456588991812" expanded="true" signature="6127:6336" placeholder="SELECT * FRO... id" />
+                <marker date="1456588991812" expanded="true" signature="6142:6224" placeholder="SELECT id FR... Posts" />
+                <marker date="1456588991812" expanded="true" signature="7715:7773" placeholder="SELECT * FRO... Posts" />
+                <marker date="1456588991812" expanded="true" signature="8361:8402" placeholder="SELECT COUNT... Posts" />
+                <marker date="1456588991812" expanded="true" signature="8976:9032" placeholder="UPDATE Posts... " />
+                <marker date="1456588991812" expanded="true" signature="10113:10148" placeholder="DELETE FROM " />
+                <marker date="1456588991812" expanded="true" signature="10734:10772" placeholder="SELECT * FRO... Posts" />
+                <marker date="1456588991812" expanded="true" signature="10734:10781" placeholder="SELECT * FRO... Posts" />
+                <marker date="1456588991812" expanded="true" signature="10734:10793" placeholder="SELECT * FRO... Posts" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -72,8 +94,8 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.2592592">
-              <caret line="42" column="59" selection-start-line="42" selection-start-column="59" selection-end-line="42" selection-end-column="59" />
+            <state vertical-scroll-proportion="-7.5925927">
+              <caret line="50" column="14" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -84,6 +106,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="9" column="18" selection-start-line="0" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="search_title.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/search_title.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.23338735">
+              <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -149,14 +181,14 @@
         <option value="$PROJECT_DIR$/php/smarty_templates/templates/navbar.tpl" />
         <option value="$PROJECT_DIR$/php/smarty_templates/templates/view_post.tpl" />
         <option value="$PROJECT_DIR$/php/smarty_templates/templates/index.tpl" />
-        <option value="$PROJECT_DIR$/php/classes/models/Post.php" />
         <option value="$PROJECT_DIR$/php/views/search.php" />
-        <option value="$PROJECT_DIR$/js/search_title.js" />
         <option value="$PROJECT_DIR$/testing/regex/hello_regex.php" />
         <option value="$PROJECT_DIR$/js/initTinyMCE.js" />
         <option value="$PROJECT_DIR$/testing/hightlig.js_test.html" />
         <option value="$PROJECT_DIR$/testing/regex/replace_br_in_pre.php" />
         <option value="$PROJECT_DIR$/php/admin/addPost.php" />
+        <option value="$PROJECT_DIR$/php/classes/models/Post.php" />
+        <option value="$PROJECT_DIR$/js/search_title.js" />
       </list>
     </option>
   </component>
@@ -281,7 +313,43 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="classes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myBlog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myBlog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myBlog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myBlog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -397,10 +465,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21212122" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21212122" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -719,35 +787,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/classes/models/Post.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7864407">
-          <caret line="442" column="58" selection-start-line="442" selection-start-column="58" selection-end-line="442" selection-end-column="58" />
-          <folding>
-            <marker date="1456581226803" expanded="true" signature="3237:3407" placeholder="UPDATE Posts... " />
-            <marker date="1456581226803" expanded="true" signature="4088:4303" placeholder="INSERT INTO Posts... " />
-            <marker date="1456581226803" expanded="true" signature="6127:6336" placeholder="SELECT * FRO... id" />
-            <marker date="1456581226803" expanded="true" signature="6142:6224" placeholder="SELECT id FR... Posts" />
-            <marker date="1456581226803" expanded="true" signature="7715:7773" placeholder="SELECT * FRO... Posts" />
-            <marker date="1456581226803" expanded="true" signature="8361:8402" placeholder="SELECT COUNT... Posts" />
-            <marker date="1456581226803" expanded="true" signature="8976:9032" placeholder="UPDATE Posts... " />
-            <marker date="1456581226803" expanded="true" signature="10113:10148" placeholder="DELETE FROM " />
-            <marker date="1456581226803" expanded="true" signature="10734:10772" placeholder="SELECT * FRO... Posts" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/views/search.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.27457628">
           <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/search_title.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20421393">
-          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -762,6 +805,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.39661017">
           <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -772,22 +816,6 @@
           <folding>
             <element signature="e#6#89#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/initTinyMCE.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="18" selection-start-line="0" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.2592592">
-          <caret line="42" column="59" selection-start-line="42" selection-start-column="59" selection-end-line="42" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -811,8 +839,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/admin/addPost.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6101695">
-          <caret line="40" column="32" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
+        <state vertical-scroll-proportion="-0.6666667">
+          <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/classes/models/Post.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.851852">
+          <caret line="278" column="0" selection-start-line="278" selection-start-column="0" selection-end-line="278" selection-end-column="0" />
+          <folding>
+            <marker date="1456588991812" expanded="true" signature="3237:3407" placeholder="UPDATE Posts... " />
+            <marker date="1456588991812" expanded="true" signature="4088:4303" placeholder="INSERT INTO Posts... " />
+            <marker date="1456588991812" expanded="true" signature="6127:6336" placeholder="SELECT * FRO... id" />
+            <marker date="1456588991812" expanded="true" signature="6142:6224" placeholder="SELECT id FR... Posts" />
+            <marker date="1456588991812" expanded="true" signature="7715:7773" placeholder="SELECT * FRO... Posts" />
+            <marker date="1456588991812" expanded="true" signature="8361:8402" placeholder="SELECT COUNT... Posts" />
+            <marker date="1456588991812" expanded="true" signature="8976:9032" placeholder="UPDATE Posts... " />
+            <marker date="1456588991812" expanded="true" signature="10113:10148" placeholder="DELETE FROM " />
+            <marker date="1456588991812" expanded="true" signature="10734:10772" placeholder="SELECT * FRO... Posts" />
+            <marker date="1456588991812" expanded="true" signature="10734:10781" placeholder="SELECT * FRO... Posts" />
+            <marker date="1456588991812" expanded="true" signature="10734:10793" placeholder="SELECT * FRO... Posts" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.5925927">
+          <caret line="50" column="14" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/initTinyMCE.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="18" selection-start-line="0" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/search_title.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23338735">
+          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
           <folding />
         </state>
       </provider>

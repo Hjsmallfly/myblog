@@ -280,7 +280,7 @@ author_id=:a_id WHERE id=$id");
     public static function search_by_keyword($db, $keyword){
 //        $db = connect_to_database();
         try{
-            $stmt = $db->prepare("SELECT * FROM Posts WHERE title LIKE ?");
+            $stmt = $db->prepare("SELECT * FROM Posts WHERE title LIKE ? ORDER BY moment DESC");
             $keyword = "%" . trim($keyword) . "%";
             $stmt->bindParam(1, $keyword, PDO::PARAM_STR);
             $stmt->execute();
