@@ -18,9 +18,7 @@ require_once($_SERVER["DOCUMENT_ROOT"] .  "/php/classes/models/Catalog.php");
 
 // 没有登陆就跳转到登陆界面
 if (!isset($_SESSION["logged"])) {
-    // 设置一个session变量用于登陆后的跳转
-    $_SESSION["go_to_post_page"] = true;
-    header("Location: login.php");
+    header("Location: login.php?location=" . $_SERVER["REQUEST_URI"]);
     return;
 }
 

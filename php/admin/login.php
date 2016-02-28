@@ -23,14 +23,14 @@ function login(){
         if ( $_POST["username"] == $user_obj["username"] && $_POST["password"] == $user_obj["password"] ) {
             $_SESSION["logged"] = true;
             $_SESSION["username"] = $_POST["username"];
-            if (isset($_SESSION["go_to_post_page"])) {
-                header("Location: /php/admin/addPost.php");
-                return;
+            $url = "/index.php";
+            if (isset($_GET["location"])){
+                $url = trim($_GET["location"]);
+                if ($url == "")
+                    $url = "/index.php";
             }
-            else {
-                header("Location: /index.php");
-                return;
-            }
+            header("Location:" . $url);
+            return;
         } else {
             $_SESSION["failed"] = true;
             return;

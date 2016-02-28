@@ -5,7 +5,8 @@
  * Date: 16-2-22
  * Time: 下午8:02
  */
-
+// 开启session
+session_start();
 //debug
 //$_GET["tag_id"] = 2;
 
