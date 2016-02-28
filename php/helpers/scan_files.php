@@ -12,7 +12,7 @@
  * @param array $ignore
  * @return array|bool
  */
-function scandir_by_time($root_folder, $time_func="filemtime", $accept=["jgeg", "jpg", "png", "gif"], $ignore=[".", ".."]){
+function scandir_by_time($root_folder, $time_func="filemtime", $accept=["jpeg", "jpg", "png", "gif"], $ignore=[".", ".."]){
     if (!file_exists($root_folder))
         return false;
     $files = array();

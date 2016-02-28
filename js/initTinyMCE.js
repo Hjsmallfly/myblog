@@ -7,6 +7,7 @@ tinyMCE.init({
     selector: '#content',
     theme: 'modern',
     br_in_pre: false,
+    preformatted : true,
     width: "100%",
     height: 260,
     init_instance_callback: "setContentCallback",   // 设置回调函数，它会传这个instance作为参数
