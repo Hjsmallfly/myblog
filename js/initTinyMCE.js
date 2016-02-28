@@ -20,6 +20,7 @@ tinyMCE.init({
         {title : 'pre', block : 'pre'},
         {title : 'code', block : 'code'},
     ],
+    convert_newlines_to_brs : false,    // 对于代码高亮插件来说非常重要
     style_formats_merge: true, // won't override default style_formats
     content_css: 'css/content.css',
     toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media| forecolor backcolor emoticons | sizeselect | bold italic | fontselect |  fontsizeselect'

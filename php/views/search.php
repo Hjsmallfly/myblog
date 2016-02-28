@@ -5,6 +5,9 @@
  * Date: 16-2-27
  * Time: 下午9:54
  */
+// 启动session
+session_start();
+
 
 // 检查参数
 if (!isset($_GET["keyword"])){

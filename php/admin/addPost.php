@@ -35,9 +35,13 @@ if (isset($_POST["title"])){
     $db = connect_to_database();
     // escape title
     $title = htmlspecialchars($_POST["title"]);
-    // 将 pre tag 里面的<br />替换成 \n
-    $pattern = "#<br\s*\/>(?=(?:(?!<\/?pre>)[\s\S])*<\/pre>)#";
-    $content = preg_replace($pattern, "\n", $_POST["content"]);
+    $content = $_POST["content"];
+//    if (mb_strstr($content, "<pre")){
+//        // 将 pre tag 里面的<br />替换成 \n
+//        $pattern = "#<br\s*\/>(?=(?:(?!<\/?pre>)[\s\S])*<\/pre>)#";
+//        // 内容太长的话 preg_replace会导致php解释器崩溃, 目前还没有找到合适办法
+//        $content = preg_replace($pattern, "\n", $_POST["content"]);
+//    }
     $post = new Post($db, $title, $content,
         $_POST["keywords"], $catalog, $_POST["username"]);
 
